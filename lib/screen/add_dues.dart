@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+
 import '../model/account_data.dart';
 import '../model/account.dart';
 import '../style/style.dart';
@@ -16,6 +18,8 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
   int _amount;
   DateTime _currentDate = DateTime.now();
   TimeOfDay _currentTime = TimeOfDay.now();
+
+  final _duesBox = Hive.box('dues');
 
   String _generateId() {
     DateTime currentDate = DateTime.now();
@@ -100,7 +104,7 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
                 discription: _discription,
                 id: _id,
               );
-              Provider.of<AccountData>(context, listen: false).addAccounts(due);
+              _duesBox.add(due);
               Navigator.pop(context);
             }
           },
