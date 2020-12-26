@@ -43,7 +43,7 @@ class DueTile extends StatelessWidget {
                 Container(
                   width: SizeConfig.width * 0.5,
                   child: Text(
-                    due.discription,
+                    due.name,
                     style: kTextStyle,
                   ),
                 ),

@@ -1,11 +1,9 @@
 import 'package:hive/hive.dart';
 
-import '../model/account_data.dart';
 import '../model/account.dart';
 import '../style/style.dart';
 import '../widget/dateTime_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AddDuesScreen extends StatefulWidget {
   @override
@@ -15,6 +13,7 @@ class AddDuesScreen extends StatefulWidget {
 class _AddDuesScreenState extends State<AddDuesScreen> {
   String _id;
   String _discription;
+  String _name;
   int _amount;
   DateTime _currentDate = DateTime.now();
   TimeOfDay _currentTime = TimeOfDay.now();
@@ -51,6 +50,18 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
           title: TextField(
             autofocus: true,
             textAlign: TextAlign.left,
+            decoration: InputDecoration(hintText: 'Enter The name'),
+            onChanged: (String value) {
+              _name = value;
+            },
+          ),
+        ),
+        SizedBox(height: 10.0),
+        ListTile(
+          leading: discriptionIcon,
+          title: TextField(
+            autofocus: true,
+            textAlign: TextAlign.left,
             decoration: InputDecoration(hintText: 'Enter The Discription'),
             onChanged: (String value) {
               _discription = value;
@@ -80,7 +91,7 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
             _currentTime = newTime;
           },
         ),
-        SizedBox(height: 30.0),
+        SizedBox(height: 10.0),
         ListTile(
           tileColor: Colors.lightBlueAccent,
           title: Text(
@@ -99,6 +110,7 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
 
             if (_discription != null || _amount != null) {
               due = Account(
+                name: _name,
                 amount: _amount,
                 date: _currentDate,
                 discription: _discription,

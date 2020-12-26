@@ -6,23 +6,27 @@ part 'account.g.dart';
 @HiveType(typeId: 0)
 class Account {
   @HiveField(0)
-  String discription;
+  String name;
   @HiveField(1)
-  int amount;
+  String discription;
   @HiveField(2)
-  String id;
+  int amount;
   @HiveField(3)
-  DateTime date;
+  String id;
   @HiveField(4)
+  DateTime date;
+  @HiveField(5)
   bool isCleared;
 
   Account({
+    @required this.name,
     @required this.discription,
     @required this.amount,
     @required this.id,
     @required this.date,
     this.isCleared = false,
-  })  : assert(discription != null),
+  })  : assert(name != null),
+        assert(discription != null),
         assert(amount != null),
         assert(id != null);
 

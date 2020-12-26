@@ -29,7 +29,6 @@ class _LockScreenState extends State<LockScreen> {
             duration: Duration(milliseconds: 500),
             height: isOpen ? 0 : SizeConfig.height,
             width: SizeConfig.width,
-            color: Colors.black,
           ),
           isOpen
               ? Container()
