@@ -1,3 +1,4 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:passbook/model/account.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,23 +13,26 @@ class AccountList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _duesBox = Hive.openBox('dues');
-    return StreamBuilder(
-        stream: _duesBox.asStream(),
-        builder: (context, snap) {
-          if (snap.hasData) {
-            final data = snap.data;
-
-            return ListView.builder(itemBuilder: (context, index) {
-              final due = data.getAt(index) as Account;
-              return DueTile(
-                 due: due,
-                 checkBoxToggle: (){},
-              );
-            });
-          }
-          return Container();
-        });
+    return WatchBoxBuilder(
+      box: Hive.box('dues'),
+      builder: (context, snap) {
+        return ListView.builder(
+          itemCount: snap.length,
+          itemBuilder: (context, index) {
+            final due = snap.getAt(index) as Account;
+            return DueTile(
+              due: due,
+              checkBoxToggle: (value) {
+                Account account = snap.getAt(index);
+                account.toggleClear();
+                debugPrint('$account');
+                snap.putAt(index, account);
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }
 
