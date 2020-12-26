@@ -4,15 +4,19 @@ import '../screen/add_dues.dart';
 import '../widget/due_list.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    Widget body = Scaffold(
+    Widget home = Scaffold(
       appBar: AppBar(title: Text('Dues')),
 
       ///
-      /// body displays [DueList] which usees ListView.builder to lay down
-      /// contents from list in [DueData]
+      /// body displays [DueList] which uses ListView.builder
       ///
       body: AccountList(),
 
@@ -46,14 +50,29 @@ class HomeScreen extends StatelessWidget {
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.done) {
           if (snap.hasError)
-            return Container(
-              child: Text('${snap.error.toString()}'),
+            return Scaffold(
+              appBar: AppBar(title: Text('Connection Error')),
+              body: Center(child: Text('${snap.error.toString()}')),
             );
           else
-            return body;
+            return home;
         } else
-          return Scaffold();
+          return Scaffold(
+            appBar: AppBar(),
+            body: Center(child: CircularProgressIndicator()),
+
+            ///
+            ///add an INTRO Animation Page Here
+            ///
+          );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    Hive.box('dues').compact();
+    Hive.close();
+    super.dispose();
   }
 }
