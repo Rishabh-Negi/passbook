@@ -9,8 +9,6 @@ import 'due_tile.dart';
 /// This create a widget to display [AccountList] from [AccountData] class
 ///
 class AccountList extends StatelessWidget {
-  final List account = [];
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -19,11 +17,11 @@ class AccountList extends StatelessWidget {
         return ListView.builder(
           itemCount: box.length,
           itemBuilder: (context, index) {
-            final due = box.getAt(index) as Account;
+            final due = box.getAt(index);
             return DueTile(
               due: due,
               checkBoxToggle: (value) {
-                Account account = box.getAt(index) as Account;
+                Account account = box.getAt(index);
                 account.toggleClear();
                 box.putAt(index, account);
               },

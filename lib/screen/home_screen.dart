@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:passbook/model/account.dart';
 
 import '../screen/add_dues.dart';
 import '../widget/due_list.dart';
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return home;
         } else
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(title: Text('...')),
             body: Center(child: CircularProgressIndicator()),
 
             ///
@@ -71,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    Hive.box('dues').compact();
     Hive.close();
     super.dispose();
   }
