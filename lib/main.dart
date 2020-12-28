@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Passbook',
       debugShowCheckedModeBanner: false,
       home: HomeLayout(),
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );

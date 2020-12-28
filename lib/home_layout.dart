@@ -18,12 +18,6 @@ class _HomeLayoutState extends State<HomeLayout> {
           SizeConfig(constraints);
           return Scaffold(
             body: PageView(
-              onPageChanged: (page) {
-                setState(() {
-                  pageNo = page.toInt();
-                  debugPrint('$pageNo');
-                });
-              },
               children: [
                 HomeScreen(),
                 PassbookScreen(),

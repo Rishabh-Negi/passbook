@@ -12,7 +12,7 @@ class ExpenseList extends StatelessWidget {
         return ListView.builder(
           itemCount: box.length,
           itemBuilder: (context, index) {
-            Account due = box.getAt(index);
+            Account due = box.getAt(index) as Account;
             return ListTile(
               leading: Icon(Icons.money_off),
               title: Text('${due.name}'),
@@ -32,3 +32,5 @@ class ExpenseList extends StatelessWidget {
     );
   }
 }
+
+Map<DateTime, List<Account>> expense = <DateTime, List<Account>>{};

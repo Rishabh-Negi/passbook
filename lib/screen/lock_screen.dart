@@ -22,10 +22,12 @@ class _LockScreenState extends State<LockScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           AnimatedContainer(
             curve: Curves.easeOut,
+            color: Colors.grey,
             duration: Duration(milliseconds: 500),
             height: isOpen ? 0 : SizeConfig.height,
             width: SizeConfig.width,
