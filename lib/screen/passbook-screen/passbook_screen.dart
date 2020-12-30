@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:passbook/model/account.dart';
-import '../widget/expense_list.dart';
+import 'package:passbook/screen/passbook-screen/widget/passbook_list.dart';
 
 class PassbookScreen extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _PassbookScreenState extends State<PassbookScreen> {
             appBar: AppBar(
               title: Text('Expenses'),
             ),
-            body: ExpenseList(),
+            body: PassbookList(),
           );
         } else
           return Scaffold(

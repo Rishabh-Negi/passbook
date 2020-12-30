@@ -33,6 +33,4 @@ class Account {
   void toggleClear() {
     isCleared = !isCleared;
   }
-
-  Account.tomap(){}
 }

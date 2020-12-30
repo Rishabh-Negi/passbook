@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../model/account.dart';
-import '../style/style.dart';
-import '../widget/dateTime_picker.dart';
-import 'package:flutter/material.dart';
+import '../../../constants/style.dart';
+import '../../../model/account.dart';
+import '../../../widget/dateTime_picker.dart';
 
 class AddDuesScreen extends StatefulWidget {
   @override

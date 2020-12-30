@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:passbook/constants/size_config.dart';
 
-import '../size_config.dart';
 
 class LockScreen extends StatefulWidget {
   @override

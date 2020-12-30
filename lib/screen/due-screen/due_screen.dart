@@ -1,9 +1,8 @@
-import 'package:hive/hive.dart';
-import 'package:passbook/model/account.dart';
-
-import '../screen/add_dues.dart';
-import '../widget/due_list.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+import 'widget/add_dues.dart';
+import 'widget/due_list.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

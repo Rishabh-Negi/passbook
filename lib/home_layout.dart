@@ -1,8 +1,9 @@
-import 'screen/home_screen.dart';
-import 'screen/passbook_screen.dart';
-import 'screen/lock_screen.dart';
 import 'package:flutter/material.dart';
-import 'size_config.dart';
+
+import 'constants/size_config.dart';
+import 'screen/due-screen/due_screen.dart';
+import 'screen/expense-screen/lock_screen.dart';
+import 'screen/passbook-screen/passbook_screen.dart';
 
 class HomeLayout extends StatefulWidget {
   @override
