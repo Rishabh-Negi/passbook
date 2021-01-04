@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-
 import '../../../constants/style.dart';
 import '../../../model/account.dart';
 import '../../../widget/dateTime_picker.dart';
@@ -18,7 +17,7 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
   DateTime _currentDate = DateTime.now();
   TimeOfDay _currentTime = TimeOfDay.now();
 
-  final _duesBox = Hive.box('dues');
+  final Box<Account> _dueBox = Hive.box<Account>('dues');
 
   String _generateId() {
     DateTime currentDate = DateTime.now();
@@ -116,7 +115,8 @@ class _AddDuesScreenState extends State<AddDuesScreen> {
                 discription: _discription,
                 id: _id,
               );
-              _duesBox.add(due);
+
+              _dueBox.add(due);
               Navigator.pop(context);
             }
           },

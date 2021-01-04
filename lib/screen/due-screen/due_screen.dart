@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:passbook/model/account.dart';
 
 import 'widget/add_dues.dart';
 import 'widget/due_list.dart';
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Hive.openBox('dues'),
+      future: Hive.openBox<Account>('dues'),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.done) {
           if (snap.hasError)
@@ -22,7 +23,29 @@ class _HomeScreenState extends State<HomeScreen> {
               body: Center(child: Text('${snap.error.toString()}')),
             );
           else
-            return home(context);
+            return Scaffold(
+              appBar: AppBar(title: Text('Dues')),
+              body: AccountList(),
+              floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: () {
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: AddDuesScreen(),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            );
         } else
           return Scaffold(
             appBar: AppBar(title: Text('...')),
@@ -31,30 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
-  Widget home(context) => Scaffold(
-        appBar: AppBar(title: Text('Dues')),
-        body: AccountList(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) {
-                return SingleChildScrollView(
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom,
-                    ),
-                    child: AddDuesScreen(),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      );
 
   @override
   void dispose() {

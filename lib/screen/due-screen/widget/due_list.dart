@@ -9,7 +9,7 @@ class AccountList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: Hive.box('dues').listenable(),
+      valueListenable: Hive.box<Account>('dues').listenable(),
       builder: (context, box, _) {
         return ListView.builder(
           itemCount: box.length,
