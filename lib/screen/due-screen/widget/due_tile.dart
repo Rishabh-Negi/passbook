@@ -1,7 +1,8 @@
-import '../model/account.dart';
-import '../style/style.dart';
-import '../size_config.dart';
+
 import 'package:flutter/material.dart';
+import '../../../constants/size_config.dart';
+import '../../../constants/style.dart';
+import '../../../model/account.dart';
 
 class DueTile extends StatelessWidget {
   final Account due;
