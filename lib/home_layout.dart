@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passbook/widget/page.dart';
 
 import 'constants/size_config.dart';
 import 'screen/due-screen/due_screen.dart';
@@ -20,9 +21,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           return Scaffold(
             body: PageView(
               children: [
-                HomeScreen(),
-                PassbookScreen(),
-                LockScreen(),
+                BuildPage(child: PassbookScreen()),
+                BuildPage(child: DueScreen()),
+                BuildPage(child: LockScreen()),
               ],
             ),
           );

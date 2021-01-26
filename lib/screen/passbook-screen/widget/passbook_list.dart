@@ -7,7 +7,7 @@ class PassbookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: Hive.box('expenses').listenable(),
+      valueListenable: Hive.box<Account>('passbook').listenable(),
       builder: (context, box, _) {
         return ListView.builder(
           itemCount: box.length,

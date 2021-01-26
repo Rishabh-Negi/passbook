@@ -5,12 +5,12 @@ import 'package:passbook/model/account.dart';
 import 'widget/add_dues.dart';
 import 'widget/due_list.dart';
 
-class HomeScreen extends StatefulWidget {
+class DueScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _DueScreenState createState() => _DueScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DueScreenState extends State<DueScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

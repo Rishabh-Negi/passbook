@@ -12,7 +12,7 @@ class _PassbookScreenState extends State<PassbookScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Hive.openBox('expenses'),
+      future: Hive.openBox<Account>('passbook'),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.done) {
           if (snap.hasError)
@@ -22,7 +22,7 @@ class _PassbookScreenState extends State<PassbookScreen> {
             );
           return Scaffold(
             appBar: AppBar(
-              title: Text('Expenses'),
+              title: Text('Passbook'),
             ),
             body: PassbookList(),
           );

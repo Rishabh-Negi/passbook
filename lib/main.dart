@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Passbook',
       debugShowCheckedModeBanner: false,
-      home: HomeLayout(),
       theme: ThemeData.light().copyWith(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: HomeLayout(),
     );
   }
 }
